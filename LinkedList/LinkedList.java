@@ -27,6 +27,20 @@ public class LinkedList{
         //step3-> head nayi add ki gyi node me lana// making newNode as head of linkedlist
         head=newNode;
     }
+    public void addLast(int data){
+        //step1 creating a newNode
+        Node newNode= new Node(data);
+        if(head==null){
+            head=tail=newNode;
+            return;
+        }
+        // step 2-tail ka node newnode ko pint kare;
+        tail.next=newNode;
+        // step 3 making tail -> newNode
+        tail=newNode;
+
+    }
+
     public void Display(){
         Node temp=head;    // using a temp variable to store value of head;
         while(temp!=null){
@@ -35,15 +49,19 @@ public class LinkedList{
             temp=temp.next;   /// taraversal// shifting temp to next node 
         }
         System.out.print("null");
+        System.out.println();
     }
     
     public static void main(String args[]){
         LinkedList obj=new LinkedList();   // object of linkedlist class
-        obj.addFirst(10);                //function calling
-        obj.addFirst(20);               //function calling
-        obj.addFirst(30);               //function calling
+        obj.addFirst(50);                //function calling
         obj.addFirst(40);               //function calling
-        obj.addFirst(50);               //function calling
+        obj.addFirst(30);               //function calling
+        obj.addFirst(20);               //function calling
+        obj.addFirst(10);               //function calling
+        obj.Display();
+        obj.addLast(60);
+        obj.addLast(70);
         obj.Display();
     }
 }
