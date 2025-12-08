@@ -1,3 +1,4 @@
+import java.util.*;
 public class LinkedList{
     public class Node{
         int data;
@@ -9,8 +10,8 @@ public class LinkedList{
          
         }
     }
-    public Node head;
-    public Node tail;
+    public Node head; //cretion of head
+    public Node tail;//cretion of tail
     
     
     // adding elements at satrting of Linkedlist:
@@ -27,6 +28,7 @@ public class LinkedList{
         //step3-> head nayi add ki gyi node me lana// making newNode as head of linkedlist
         head=newNode;
     }
+    //adding elememt at last of LinkedList
     public void addLast(int data){
         //step1 creating a newNode
         Node newNode= new Node(data);
@@ -41,6 +43,26 @@ public class LinkedList{
 
     }
 
+    // Adding elements at middle/nth postion in linkedlist
+    public void addMiddle(int n,int data){
+        // when you want to add element at first place/ call kr lo addFirst method
+        if(n==1){
+            addFirst(data);
+            return;
+        }
+        // step 1 creating a newNode 
+        Node newNode=new Node(data);
+        Node temp=head;
+        int i=1;
+        while(i < n-1){
+            temp=temp.next;
+            i++;
+        }
+        newNode.next=temp.next;
+        temp.next=newNode;
+    }
+
+// displaying element of LINKEDLIST
     public void Display(){
         Node temp=head;    // using a temp variable to store value of head;
         while(temp!=null){
@@ -54,6 +76,7 @@ public class LinkedList{
     
     public static void main(String args[]){
         LinkedList obj=new LinkedList();   // object of linkedlist class
+        Scanner sc=new Scanner (System.in);
         obj.addFirst(50);                //function calling
         obj.addFirst(40);               //function calling
         obj.addFirst(30);               //function calling
@@ -62,6 +85,11 @@ public class LinkedList{
         obj.Display();
         obj.addLast(60);
         obj.addLast(70);
+        System.out.print(" Enter postion where you want to insert ele:");
+        int pos =sc.nextInt();
+        System.out.print(" Enter element  you want to insert ele:");
+        int ele =sc.nextInt();
+        obj.addMiddle(pos, ele);
         obj.Display();
     }
 }
