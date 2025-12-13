@@ -23,10 +23,13 @@ public static int size;
     newNode.next=head;
     head=newNode;
  }
+
+ ///<<<<----- reomoving first element---->>>
+ ////time complexity =O(1)
  public int removeFirst() {
     if (size == 0) {
         System.out.println("Linked list is Empty");
-        return Integer.MIN_VALUE; // corrected
+        return Integer.MIN_VALUE;    //return garbage value
     }
 
     int val = head.data; // store value to return
@@ -37,9 +40,32 @@ public static int size;
         return val;
     }
 
-    head = head.next; // move head forward
-    size--; // decrement size correctly
+    head = head.next; //making the second node as head
+    size--; 
     return val;
+}
+
+    ///<<<<----- reomoving last element---->>>
+    ////time complexity =O(n)
+public void removeLast(){
+    if(size==0){
+        System.out.print("Linked List is Empty");
+        return;
+
+    }
+    if(size==1){
+        head=tail=null;
+        size=0;
+        return;
+    }
+    //finding second last node
+    Node temp=head;
+    for (int i=0;i<size-2;i++){
+        temp=temp.next;
+    }
+    temp.next=null;
+    tail=temp;
+    size--;
 }
 
  public void Display(){
@@ -59,6 +85,9 @@ public static int size;
     obj.Display();
     System.out.println("\nsize of linked list is "+obj.size);
      obj.removeFirst();
+      obj.Display();
+      System.out.println("\nsize of linked list is "+obj.size);
+      obj.removeLast();
       obj.Display();
       System.out.println("\nsize of linked list is "+obj.size);
      
