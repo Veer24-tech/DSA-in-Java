@@ -1,64 +1,69 @@
-//Queue creation using Array---->   fixed size(n) and O(1) complexity
-public class QueArr{
-    static class Queue{
-       static int arr[];   
-          static int size;
-         static  int rear;
-        //constructor of queue
-        Queue(int n){
-             arr=new int[n];
-            size=n;
-            rear=-1;     //  front to pata hi rahega hamsa ki 0th index hoga 
+//Queue using array---
+
+public class QueArr {
+
+    public static class Queue {
+
+        public int arr[];
+        int rear;
+        int size;
+
+        Queue(int n) {
+            arr = new int[n];
+            rear = -1;
+            size = n;
         }
-        // isEmpty method
-        public static boolean isEmpty(){
-   return  rear==-1;
-        
+
+        //isEmpty method----
+        public boolean isEmpty() {
+            return rear == -1;
         }
-        // addmethod-
-        public static void add(int data){
-            if(rear == size-1){
-                System.out.print("Quee is full");
+
+//add method
+        public void add(int data) {
+            if (rear == (size - 1)) {
+                System.out.println("Queue is full");
                 return;
             }
-            rear= rear+1;
-            arr[rear]=data;
+            rear = rear + 1;
+            arr[rear] = data;
 
         }
 
-        public static int remove(){
-            if(isEmpty()){
+//delete method
+        public int Remove() {
+            if (isEmpty()) {
                 System.out.print("Queue is Empty");
-                return-1;
+                return -1;
             }
-            int front=arr[0];
-            for(int i=0;i<rear;i++){
-                arr[i]=arr[i+1];
+            int front = arr[0];
+            for (int i = 0; i < size - 1; i++) {
+                arr[i] = arr[i + 1];
             }
-            rear=rear-1;
-            return front ; // har bar front hi remove ho raha hoga to vahi 
+            rear = rear - 1;
+            return front;
         }
-        //peek funcgtion
-        public static int peek(){
-              if(isEmpty()){
-                System.out.print("Queue is Empty");
-                return-1;
-            }
-            int peek=arr[0];
-return peek;
-        }
-        
-    }
-    public static void main(String args[]){
-Queue q =new Queue(5);
-q.add(1);
-q.add(2);
-q.add(3);
 
- while(!q.isEmpty()){
-        System.out.print(q.peek()+" ");
-        q.remove();
+// peek method
+        public int peek() {
+            if (isEmpty()) {
+                System.out.print("Queue is empty");
+                return -1;
+            }
+            return arr[0];
+        }
     }
+
+    public static void main(String args[]) {
+        Queue q = new Queue(6);
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        q.add(4);
+        q.add(5);
+        while (!q.isEmpty()) {
+            System.out.print(q.peek()+" ");
+            q.Remove();
+        }
     }
-   
 }
